@@ -32,7 +32,7 @@ modules:
 
   - name: spatest
     type: approuter.nodejs
-    path: app/
+    path: app/router
     parameters:
       keep-existing-routes: true
       disk-quota: 256M

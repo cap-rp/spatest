@@ -6,13 +6,11 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@cap-js/hana": "^1",
+    "@cap-js/hana": "^1.5.2",
     "@cap-rp/bpa": "^1.0.0",
-    "@sap-cloud-sdk/connectivity": "^3.24.0",
-    "@sap-cloud-sdk/generator": "^3.24.0",
-    "@sap-cloud-sdk/odata-v2": "^3.24.0",
-    "@sap-cloud-sdk/openapi": "^3.24.0",
-    "@sap-cloud-sdk/openapi-generator": "^3.24.0",
+    "@sap-cloud-sdk/connectivity": "^3.25.0",
+    "@sap-cloud-sdk/odata-v2": "^3.25.0",
+    "@sap-cloud-sdk/openapi": "^3.25.0",
     "@sap/approuter": "^17.1.0",
     "@sap/cds": "^8.5.1",
     "@sap/xsenv": "^5.4.0",
@@ -25,6 +23,8 @@
     "@cap-js/cds-typer": ">=0.1",
     "@cap-js/cds-types": "^0.7.0",
     "@cap-js/sqlite": "^1.7.7",
+    "@sap-cloud-sdk/generator": "^3.25.0",
+    "@sap-cloud-sdk/openapi-generator": "^3.25.0",
     "@sap/cds-dk": "^8.5.1",
     "@types/node": "^22.10.2",
     "cross-env": "^7.0.3",
@@ -49,7 +49,7 @@
       },
       "auth": "xsuaa",
       "db": {
-        "kind": "sqlite"
+        "kind": "hana"
       },
       "destinations": true,
       "connectivity": true,
