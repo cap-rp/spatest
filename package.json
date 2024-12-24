@@ -1,0 +1,72 @@
+{
+  "name": "spatest",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/hana": "^1",
+    "@cap-rp/bpa": "^1.0.0",
+    "@sap-cloud-sdk/connectivity": "^3.24.0",
+    "@sap-cloud-sdk/generator": "^3.24.0",
+    "@sap-cloud-sdk/odata-v2": "^3.24.0",
+    "@sap-cloud-sdk/openapi": "^3.24.0",
+    "@sap-cloud-sdk/openapi-generator": "^3.24.0",
+    "@sap/approuter": "^17.1.0",
+    "@sap/cds": "^8.5.1",
+    "@sap/xsenv": "^5.4.0",
+    "@sap/xssec": "^4",
+    "@types/express": "^4.17.16",
+    "express": "^4.21.2",
+    "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "@cap-js/cds-typer": ">=0.1",
+    "@cap-js/cds-types": "^0.7.0",
+    "@cap-js/sqlite": "^1.7.7",
+    "@sap/cds-dk": "^8.5.1",
+    "@types/node": "^22.10.2",
+    "cross-env": "^7.0.3",
+    "typescript": "^5"
+  },
+  "scripts": {
+    "start": "cds watch --profile hybrid",
+    "kill-port": "kill $(lsof -t -i:4004) && kill $(lsof -t -i:5000)",
+    "router": "cds bind --exec -- npm start --prefix app/router",
+    "gpg-restart": "git config --global user.signingkey && gpgconf --kill gpg-agent && gpg-agent --daemon && git config --global user.signingkey",
+    "watch": "cds-ts w"
+  },
+  "cds": {
+    "requires": {
+      "[hybrid]": {
+        "auth": {
+          "kind": "xsuaa"
+        }
+      },
+      "approuter": {
+        "kind": "cloudfoundry"
+      },
+      "auth": "xsuaa",
+      "db": {
+        "kind": "sqlite"
+      },
+      "destinations": true,
+      "connectivity": true,
+      "Workflow": {
+        "kind": "rest",
+        "model": "srv/external/SPA_Workflow_Runtime",
+        "credentials": {
+          "destination": "SAP_BTP_BPA_OACC",
+          "path": "/public/workflow/rest"
+        }
+      }
+    },
+    "sql": {
+      "native_hana_associations": false
+    }
+  },
+  "imports": {
+    "#cds-models/*": "./@cds-models/*/index.js"
+  }
+}

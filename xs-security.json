@@ -1,0 +1,44 @@
+{
+  "xsappname": "spa",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes": [
+    {
+      "name": "uaa.user",
+      "description": "UAA"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Token_Exchange",
+      "description": "UAA",
+      "scope-references": [
+        "uaa.user"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "ZB__TOKEN",
+      "description": "SPA Token_Exchange",
+      "role-template-references": [
+        "$XSAPPNAME.Token_Exchange"
+      ]
+    }
+  ],
+  "attributes": [],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.${default-domain}/login/*",
+      "https://*.eu10.applicationstudio.cloud.sap/login/*",
+      "http://localhost:5000/*",
+      "http://localhost:4004/*",
+      "https://*.eu10.applicationstudio.cloud.sap/login/callback"
+    ],
+    "credential-types": [
+      "binding-secret",
+      "x509"
+    ]
+  },
+  "xsenableasyncservice": "false"
+}

@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run khata",
+      "runtimeExecutable": "cds",
+      "request": "launch",
+      "args": [
+        "watch",
+        "--open"
+      ],
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "run.config": "{\"handlerId\":\"lcap_run_config_handler_id\",\"runnableId\":\"{\\\"projectPath\\\":\\\"/home/user/projects/khata\\\",\\\"profileName\\\":\\\"\\\"}\"}"
+      }
+    }
+  ]
+}
